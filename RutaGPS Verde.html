@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta GPS</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map" style="height: 600px;"></div>
+    <script>
+        var map = L.map('map').setView([32.52867665621845, -116.9872034122678], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var route = [
+            [32.52867665621845, -116.9872034122678],
+            [32.52897821955416, -116.98244165471823],
+            [32.529844179587656, -116.96809919997145],
+            [32.53155977634171, -116.95428730097385],
+            [32.515947063532664, -116.96295346975208],
+            [32.51318582978871, -116.96187051968201],
+            [32.503689450050516, -116.96314455762706],
+            [32.50043859162764, -116.96609993292658],
+            [32.49943574508025, -116.96933534911773]
+        ];
+
+        L.polyline(route, {color: 'blue'}).addTo(map);
+        map.fitBounds(L.polyline(route).getBounds());
+    </script>
+</body>
+</html>
